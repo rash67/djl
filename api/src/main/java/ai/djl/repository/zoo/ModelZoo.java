@@ -25,6 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ai.djl.util.ClassLoaderUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -59,7 +60,8 @@ public abstract class ModelZoo {
     private Map<String, ModelLoader> modelLoaders = new ConcurrentHashMap<>();
 
     static {
-        ServiceLoader<ZooProvider> providers = ServiceLoader.load(ZooProvider.class);
+        ServiceLoader<ZooProvider> providers =
+                ServiceLoader.load(ZooProvider.class, ClassLoaderUtils.getContextClassLoader());
         for (ZooProvider provider : providers) {
             registerModelZoo(provider);
         }

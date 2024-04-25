@@ -21,4 +21,16 @@
     <Match>
         <Class name="~ai\.djl\.mxnet\.jna\..*"/>
     </Match>
+    <Match>
+        <Field type="java.util.Map"/>
+        <Bug pattern="SE_BAD_FIELD"/>
+    </Match>
+    <Match>
+        <Field type="java.util.Set"/>
+        <Bug pattern="SE_BAD_FIELD"/>
+    </Match>
+    <Match>
+        <Field type="java.util.List"/>
+        <Bug pattern="SE_BAD_FIELD"/>
+    </Match>
 </FindBugsFilter>

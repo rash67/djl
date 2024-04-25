@@ -26,15 +26,17 @@ import tech.tablesaw.api.ColumnType;
 import tech.tablesaw.io.csv.CsvReadOptions;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 
 public class TablesawDatasetTest {
 
     @Test
-    public void testTablesawDataset() throws IOException, TranslateException {
+    public void testTablesawDataset() throws IOException, TranslateException, URISyntaxException {
         URL dailyDelhiClimateTest =
-                new URL(
-                        "https://mlrepo.djl.ai/dataset/tabular/ai/djl/basicdataset/daily-delhi-climate/3.0/DailyDelhiClimateTest.csv");
+                new URI(
+                        "https://mlrepo.djl.ai/dataset/tabular/ai/djl/basicdataset/daily-delhi-climate/3.0/DailyDelhiClimateTest.csv").toURL();
 
         try (Model model = Model.newInstance("model")) {
             model.setBlock(Blocks.identityBlock());
